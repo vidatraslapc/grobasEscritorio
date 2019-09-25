@@ -1,7 +1,7 @@
 {
-  "name": "VirtualGameSalta",
+  "name": "Grobas",
   "version": "1.0.5",
-  "description": "Buscador y Escaner QR",
+  "description": "Ascensores y Gruas",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/overpuntoplus/virtualgameEscritorio.git"
+    "url": "git+https://github.com/overpuntoplus/grobasEscritorio.git"
   },
-  "bugs": "https://github.com/overpuntoplus/virtualgameEscritorio/issues",
+  "bugs": "https://github.com/overpuntoplus/grobasEscritorio/issues",
   "author": "Augusto Daniel Ruyz",
   "license": "MIT",
   "build": {
-    "appId": "com.overapp.virtualgame",
-    "productName": "VirtualGameSalta",
-    "copyright": "Augusto Daniel Ruyz",
+    "appId": "com.vision.grobas",
+    "productName": "Grobas",
+    "copyright": "Vision Estudio - Augusto Daniel Ruyz",
     "win": {
       "target": [
         "nsis"
@@ -38,11 +38,11 @@
     "electron-builder": "^20.38.5"
   },
   "keywords": [
-    "virtual",
-    "game",
-    "catalogos",
-    "buscador",
-    "qr"
+    "ascensores",
+    "gruas",
+    "obras",
+    "herreria",
+    "taller"
   ],
   "dependencies": {
     "electron-is-dev": "^1.0.1",
