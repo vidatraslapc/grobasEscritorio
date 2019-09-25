@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GROBAS</title>
+</head>
+<body>
+<style type="text/css">
+.rod360{ border-radius: 50% 50% ; -moz-border-radius: 50% 50% ; -webkit-border-radius: 50% 50% ; }
+body,html{ background-color: #333; margin:0; -webkit-user-select: none; border:2px solid #fff; }
+html{ border:3px solid #000; }
+#wclog{ width:100%; height:290px; text-align:center; position:relative; overflow:hidden; display:block; }
+#logo{ width:90%; height:133px; margin-top:30px; }
+#carga{ background:#fff; width:30px; height:30px; padding:10px; margin:0 auto 0 auto; }
+#version,#mensajes{  color: #fff;   font-family: Verdana, Geneva, sans-serif;    }
+#version{
+position:absolute; margin:-35px 0 0 85%; font-weight:bold; text-shadow:1px 1px #333; 
+font-size:8px;
+}
+#mensajes{
+font-size:11px;
+padding:15px 0 15px 0;
+}
+</style>
+<div id="wclog">
+	<div style="position: absolute; width:100%; height:100%;"></div>
+	<img src="log.png" id="logo" />
+	<div id="version">vX.Y.Z</div>
+	<div id="carga" class="rod360"><img src="c.gif" width="30" /></div>
+	<div id="mensajes">Iniciando programa...</div>
+</div>
+<script>
+
+/* VERSION DE APP */
+let version = window.location.hash.substring(1);
+document.getElementById('version').innerText = version;
+
+/* PROCESO PRINCIPAL DE APP */
+const {ipcRenderer} = require('electron');
+
+/* ESTADO DE LA ACTUALIZACION*/
+ipcRenderer.on('message', function(event, text) {
+	document.getElementById('mensajes').innerHTML = text;
+});
+</script>
+</body>
+</html>
