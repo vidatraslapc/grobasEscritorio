@@ -46,9 +46,7 @@ if (!gotTheLock) {
 				show: false, frame: false
 			});
 			ventana.loadURL(URLAPPWEBlink);
-			
 			// ventana.webContents.openDevTools()
-			
 			ventana.once('ready-to-show', () => {
 				carga.hide();
 				ventana.maximize();
