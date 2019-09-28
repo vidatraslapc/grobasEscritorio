@@ -1,5 +1,5 @@
 {
-  "name": "Grobas",
+  "name": "Gustavo Robledo",
   "version": "1.0.0",
   "description": "Ascensores y Gruas",
   "main": "main.js",
@@ -17,8 +17,8 @@
   "author": "Augusto Daniel Ruyz",
   "license": "MIT",
   "build": {
-    "appId": "com.vision.grobas",
-    "productName": "Grobas",
+    "appId": "com.vision.grobledo",
+    "productName": "Gustavo Robledo",
     "copyright": "Vision Estudio - Augusto Daniel Ruyz",
     "win": {
       "target": [
