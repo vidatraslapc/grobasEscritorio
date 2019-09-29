@@ -18,7 +18,7 @@
   "license": "MIT",
   "build": {
     "appId": "com.vision.grobledo",
-    "productName": "GustavoRobledo",
+    "productName": "Gustavo Robledo",
     "copyright": "Vision Estudio - Augusto Daniel Ruyz",
     "win": {
       "target": [
