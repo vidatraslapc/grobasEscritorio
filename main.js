@@ -1,9 +1,14 @@
 // CONSTANTES PRINCIPALES
+
+
+
 const {app, BrowserWindow, Tray, Menu, nativeImage, dialog} = require('electron');
+const electron = require('electron');
+
 const {autoUpdater} = require("electron-updater");
 const isDev = require('electron-is-dev');
 const gotTheLock = app.requestSingleInstanceLock();
-const tituloAPP = 'GROBAS';
+const tituloAPP = 'GUSTAVO ROBLEDO';
 const URLAPPWEBlink = 'https://liberlat.com/grobas/';
 const URLAPPWEBlinkOFFLINE = 'https://liberlat.com/';
 
@@ -42,18 +47,22 @@ if (!gotTheLock) {
 				show: false, frame: false
 			});
 			ventana.loadURL(URLAPPWEBlink);
-			// ventana.webContents.openDevTools()
+			ventana.webContents.openDevTools()
 			ventana.once('ready-to-show', () => {
 				carga.hide();
 				ventana.maximize();
 				var menuSegundoPlano = Menu.buildFromTemplate([
 					{ type: 'separator' },
 					{ label: 'Modo Ventana', type: 'normal', click(){
+						const screenElectron = electron.screen.getPrimaryDisplay().size;
+						const width=screenElectron.width;
+						const height=screenElectron.height-25;
+						var tamanioVentana=width/2;
+						ventana.setSize(tamanioVentana, height);
+						ventana.setPosition( (width-tamanioVentana) , 0);
 						
 					}},
-					{ type: 'separator' },
-					{ label: 'Maximizar', type: 'normal', click(){ ventana.maximize(); }},
-					{ label: 'Minimizar', type: 'normal', click(){ ventana.minimize(); } },
+					{ label: 'Modo Entero', type: 'normal', click(){ ventana.maximize(); }},
 					{ type: 'separator' },
 					{ label: 'Actualizar', type: 'normal', click(){ actualizarPrincipal(); } },
 					{ type: 'separator' },
@@ -63,10 +72,12 @@ if (!gotTheLock) {
 				appIcon.setToolTip(tituloAPP);
 				appIcon.setContextMenu(menuSegundoPlano);
 				appIcon.on('click', function(e){
+					
 					if (ventana.isVisible()) { ventana.hide(); } else { ventana.maximize(); }
 					if(afipventana!=null){
 						afipventana.maximize();
 					}
+					
 				});
 				
 				// MODO ADMINISTRADOR - IDENTIFICADOR DE PC
