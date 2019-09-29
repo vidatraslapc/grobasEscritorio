@@ -12,20 +12,16 @@ if (!gotTheLock) {
   app.quit()
 } else {
 	// ESTRUCTURAS PRINCIPALES
-	let ventana; let catalogos; let precios; let carga; let username = process.env.username || process.env.user;
+	let ventana; let afipventana; let carga; let username = process.env.username || process.env.user;
 	function actualizarPrincipal() {
 			ventana.maximize();
 			carga.show();
 			autoUpdater.checkForUpdatesAndNotify();
 			ventana.webContents.session.clearCache(function(){});
 			ventana.loadURL(URLAPPWEBlink, {"extraHeaders" : "pragma: no-cache\n"});
-			if(catalogos){
-				catalogos.webContents.session.clearCache(function(){});
-				catalogos.loadURL(URLAPPWEBlink+"catalogo/juguetes/", {"extraHeaders" : "pragma: no-cache\n"});
-			}
-			if(precios){
-				precios.webContents.session.clearCache(function(){});
-				precios.loadURL(URLAPPWEBlink+"precios/", {"extraHeaders" : "pragma: no-cache\n"});
+			if(afipventana){
+				afipventana.webContents.session.clearCache(function(){});
+				afipventana.loadURL(URLAPPWEBlink+"catalogo/juguetes/", {"extraHeaders" : "pragma: no-cache\n"});
 			}
 			if(isDev){
 				carga.hide();
@@ -52,7 +48,11 @@ if (!gotTheLock) {
 				ventana.maximize();
 				var menuSegundoPlano = Menu.buildFromTemplate([
 					{ type: 'separator' },
-					{ label: 'Mostrar', type: 'normal', click(){ ventana.maximize(); }},
+					{ label: 'Modo Ventana', type: 'normal', click(){
+						
+					}},
+					{ type: 'separator' },
+					{ label: 'Maximizar', type: 'normal', click(){ ventana.maximize(); }},
 					{ label: 'Minimizar', type: 'normal', click(){ ventana.minimize(); } },
 					{ type: 'separator' },
 					{ label: 'Actualizar', type: 'normal', click(){ actualizarPrincipal(); } },
@@ -64,50 +64,15 @@ if (!gotTheLock) {
 				appIcon.setContextMenu(menuSegundoPlano);
 				appIcon.on('click', function(e){
 					if (ventana.isVisible()) { ventana.hide(); } else { ventana.maximize(); }
-					if(catalogos!=null || precios!=null){
-						catalogos.maximize();
-						precios.maximize();
+					if(afipventana!=null){
+						afipventana.maximize();
 					}
 				});
 				
 				// MODO ADMINISTRADOR - IDENTIFICADOR DE PC
 				if(username=="Richard" || username=="Virtual Game Princip" || username=="NOTEBOOK"){
-					/*
-					ventana.hide();
-					catalogos = new BrowserWindow({
-						width: 800,
-						height: 600,
-						icon: 'icon.png',
-						webPreferences: {
-							nodeIntegration: false
-						},
-						show: false, frame: false
-					});
-					catalogos.loadURL(URLAPPWEBlink+"catalogo/juguetes/");
-					catalogos.once('closed', () => { catalogos=null; });
-					catalogos.on('close', function (event) { event.preventDefault(); });
-					catalogos.once('ready-to-show', ()=>{
-						catalogos.maximize();
-					});
 					
-					precios = new BrowserWindow({
-						width: 800,
-						height: 600,
-						icon: 'icon.png',
-						webPreferences: {
-							nodeIntegration: false
-						},
-						show: false, frame: false
-					});
-					precios.loadURL(URLAPPWEBlink+"precios/");
-					precios.once('closed', () => { catalogos=null; });
-					precios.on('close', function (event) { event.preventDefault(); });
-					precios.once('ready-to-show', ()=>{
-						precios.maximize();
-					});
-					*/
 				}
-				
 				
 			});
 			ventana.once('closed', () => { ventana=null; });
