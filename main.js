@@ -57,7 +57,7 @@ if (!gotTheLock) {
 					{ type: 'separator' },
 					{ label: 'Actualizar', type: 'normal', click(){ actualizarPrincipal(); } },
 					{ type: 'separator' },
-					{ label: 'Cerrar', type: 'normal', click(){ if(ventana){ ventana.destroy(); } if(carga){ carga.destroy(); } if(precios){ precios.destroy();} app.quit(); } },
+					{ label: 'Cerrar', type: 'normal', click(){ if(ventana){ ventana.destroy(); } if(carga){ carga.destroy(); } if(afipventana){ afipventana.destroy();} app.quit(); } },
 					{ type: 'separator' }
 				]);
 				appIcon.setToolTip(tituloAPP);
