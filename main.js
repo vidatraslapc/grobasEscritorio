@@ -47,7 +47,7 @@ if (!gotTheLock) {
 				show: false, frame: false
 			});
 			ventana.loadURL(URLAPPWEBlink);
-			ventana.webContents.openDevTools()
+			// ventana.webContents.openDevTools()
 			ventana.once('ready-to-show', () => {
 				carga.hide();
 				ventana.maximize();
@@ -60,7 +60,7 @@ if (!gotTheLock) {
 						var tamanioVentana=width/2;
 						ventana.setSize(tamanioVentana, height);
 						ventana.setPosition( (width-tamanioVentana) , 0);
-						
+						ventana.show();
 					}},
 					{ label: 'Modo Entero', type: 'normal', click(){ ventana.maximize(); }},
 					{ type: 'separator' },
